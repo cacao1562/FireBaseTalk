@@ -33,7 +33,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.array.append(userModel)
             }
             
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.tableview.reloadData();
             }
         })
@@ -70,7 +70,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             m.centerY.equalTo(cell)
             m.left.equalTo(imageview.snp.right).offset(30)
             }
-        label.text = array[indexPath.row].username
+        label.text = array[indexPath.row].name
         
         return cell
     }
