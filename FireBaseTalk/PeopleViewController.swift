@@ -18,8 +18,9 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableview)
         tableview.snp.makeConstraints { (m) in
-            m.top.equalTo(view).offset(20)
+            m.top.equalTo(view)
             m.bottom.left.right.equalTo(view)
+   
         }
         
         Database.database().reference().child("users").observe(DataEventType.value, with: { (snapshot) in
@@ -35,6 +36,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             DispatchQueue.main.async {
                 self.tableview.reloadData();
+                
             }
         })
 
@@ -51,7 +53,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.addSubview(imageview)
         imageview.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
-            m.left.equalTo(cell)
+            m.left.equalTo(cell).offset(10)
             m.height.width.equalTo(50)
         }
         
@@ -68,15 +70,23 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.addSubview(label)
         label.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
-            m.left.equalTo(imageview.snp.right).offset(30)
+            m.left.equalTo(imageview.snp.right).offset(20)
             }
         label.text = array[indexPath.row].name
+        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController")
+        self.navigationController?.pushViewController(view!, animated: true)
     }
 
    
