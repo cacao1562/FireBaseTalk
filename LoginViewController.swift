@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
     
     let remoteConfig = RemoteConfig.remoteConfig()
     var color : String!
+    private var spinner : UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -33,6 +34,13 @@ class LoginViewController: UIViewController {
         loginButton.backgroundColor = UIColor(hex: color)
         singinButton.backgroundColor = UIColor(hex: color)
         
+        spinner = UIActivityIndicatorView()
+        spinner.frame = CGRect(x: view.frame.width/2-50, y: view.frame.height/2-50, width: 100, height: 100)
+        spinner.color = UIColor.black
+        spinner.hidesWhenStopped = true
+        //spinner.activityIndicatorViewStyle = .whiteLarge 사이즈 변경되지만 색이 흰색
+        self.view.addSubview(spinner)
+        
         loginButton.addTarget(self, action: #selector(loginEvent), for: .touchUpInside)
         singinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
 
@@ -40,6 +48,8 @@ class LoginViewController: UIViewController {
             (auth, user) in
             if (user != nil) {
                 let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewTabBarController") as! UITabBarController
+                
+                self.spinner.stopAnimating()
                 self.present(view, animated: true)
             }
         }
@@ -59,14 +69,22 @@ class LoginViewController: UIViewController {
     
     func loginEvent() {
         
+        if ( email.text!.isEmpty || password.text!.isEmpty) {
+            self.view.makeToast("이메일 패스워드를 입력하세요", duration: 1.0, position: .bottom)
+            return
+        } else {
+        spinner.startAnimating()
+        
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, err) in
             
             if (err != nil) {
                 let alert = UIAlertController(title: "에러", message: err.debugDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
                 self.present(alert, animated: true)
+                self.spinner.stopAnimating()
             }
         }
+      } //else
     }
     
     func presentSignup() {

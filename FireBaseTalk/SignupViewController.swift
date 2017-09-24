@@ -13,6 +13,8 @@ class SignupViewController: UIViewController , UINavigationControllerDelegate, U
     @IBOutlet var signup: UIButton!
     @IBOutlet var cancel: UIButton!
     @IBOutlet var imageView: UIImageView!
+    private var imgCheck : Int = 0
+    private var spinner : UIActivityIndicatorView!
     
     let remoteConfig = RemoteConfig.remoteConfig()
     var color : String?
@@ -26,6 +28,11 @@ class SignupViewController: UIViewController , UINavigationControllerDelegate, U
             m.right.top.left.equalTo(self.view)
             m.height.equalTo(20)
             
+            spinner = UIActivityIndicatorView()
+            spinner.frame = CGRect(x: view.frame.width/2-50, y: view.frame.height/2-50, width: 100, height: 100)
+            spinner.color = UIColor.black
+            spinner.hidesWhenStopped = true
+            self.view.addSubview(spinner)
         }
         
         color = remoteConfig["splash_background"].stringValue
@@ -59,27 +66,30 @@ class SignupViewController: UIViewController , UINavigationControllerDelegate, U
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(imagePicker, animated: true)
-        
     }
     
     func cameraPicker(){
         let picker = UIImagePickerController()
-        
+        picker.delegate = self
         picker.sourceType = .camera
         picker.allowsEditing = true
-        
-        picker.delegate = self
-        
+ 
         self.present(picker, animated: false)
-
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imageView.image = info[UIImagePickerControllerOriginalImage] as! UIImage
         dismiss(animated: true, completion: nil)
+        imgCheck = 1
     }
     
     func singupEvent(){
+        
+        if ((email.text?.isEmpty)! || (name.text?.isEmpty)! || (password.text?.isEmpty)! || (imgCheck == 0)){
+            self.view.makeToast("모두입력 또는 사진선택 하세요", duration: 1.0, position: .top)
+            return
+        }
+        spinner.startAnimating()
         
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (user, err) in
             let uid = user?.uid
@@ -106,6 +116,7 @@ class SignupViewController: UIViewController , UINavigationControllerDelegate, U
     }
     
     func cancelEvent() {
+        spinner.stopAnimating()
         self.dismiss(animated: true, completion: nil)
     }
 
