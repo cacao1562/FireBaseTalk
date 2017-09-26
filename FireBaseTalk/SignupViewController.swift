@@ -99,7 +99,7 @@ class SignupViewController: UIViewController , UINavigationControllerDelegate, U
             Storage.storage().reference().child("userImage").child(uid!).putData(image!, metadata: nil, completion: { (data, error) in
             let imageUrl = data?.downloadURL()?.absoluteString
                 
-            let values = ["name":self.name.text!,"profileImageUrl":imageUrl]
+                let values = ["name":self.name.text!,"profileImageUrl":imageUrl,"uid":Auth.auth().currentUser?.uid]
                 
                 Database.database().reference().child("users").child(uid!).setValue(values, withCompletionBlock:{ (err,ref) in
                 if(err==nil){

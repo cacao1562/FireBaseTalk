@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4D0B23E01F52B1A400633893 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B23DF1F52B1A400633893 /* Toast.swift */; };
+		4D4D23A41F7A86A500E854BE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D23A31F7A86A500E854BE /* ChatViewController.swift */; };
+		4D4D23A71F7A87CF00E854BE /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4D23A61F7A87CF00E854BE /* ChatModel.swift */; };
 		4D6A05B71F5641F400B38067 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A05B61F5641F400B38067 /* PeopleViewController.swift */; };
 		4DB4B0F51F68220200B584B8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB4B0F41F68220200B584B8 /* UserModel.swift */; };
 		4DC909ED1F512BA300792421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC909EC1F512BA300792421 /* AppDelegate.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		33B136B7ADACEF5F85FF7AFB /* Pods-FireBaseTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireBaseTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireBaseTalk/Pods-FireBaseTalk.debug.xcconfig"; sourceTree = "<group>"; };
 		4D0B23DF1F52B1A400633893 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		4D4D23A31F7A86A500E854BE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		4D4D23A61F7A87CF00E854BE /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		4D6A05B61F5641F400B38067 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		4DB4B0F41F68220200B584B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4DC909E91F512BA300792421 /* FireBaseTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireBaseTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4D4D23A51F7A879C00E854BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4DB4B0F41F68220200B584B8 /* UserModel.swift */,
+				4D4D23A61F7A87CF00E854BE /* ChatModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4DC909E01F512BA300792421 = {
 			isa = PBXGroup;
 			children = (
@@ -83,13 +96,14 @@
 		4DC909EB1F512BA300792421 /* FireBaseTalk */ = {
 			isa = PBXGroup;
 			children = (
+				4D4D23A51F7A879C00E854BE /* Model */,
 				4DC909EC1F512BA300792421 /* AppDelegate.swift */,
 				4D0B23DF1F52B1A400633893 /* Toast.swift */,
 				4DC90A021F51491E00792421 /* LoginViewController.swift */,
 				4DC90A041F51527000792421 /* SignupViewController.swift */,
 				4DC909EE1F512BA300792421 /* ViewController.swift */,
 				4D6A05B61F5641F400B38067 /* PeopleViewController.swift */,
-				4DB4B0F41F68220200B584B8 /* UserModel.swift */,
+				4D4D23A31F7A86A500E854BE /* ChatViewController.swift */,
 				4DC909F01F512BA400792421 /* Main.storyboard */,
 				4DC909F31F512BA400792421 /* Assets.xcassets */,
 				4DC90A001F51415900792421 /* RemoteConfigDefaults.plist */,
@@ -257,11 +271,13 @@
 			files = (
 				4DC90A031F51491E00792421 /* LoginViewController.swift in Sources */,
 				4DB4B0F51F68220200B584B8 /* UserModel.swift in Sources */,
+				4D4D23A41F7A86A500E854BE /* ChatViewController.swift in Sources */,
 				4DC909EF1F512BA300792421 /* ViewController.swift in Sources */,
 				4D0B23E01F52B1A400633893 /* Toast.swift in Sources */,
 				4D6A05B71F5641F400B38067 /* PeopleViewController.swift in Sources */,
 				4DC90A051F51527000792421 /* SignupViewController.swift in Sources */,
 				4DC909ED1F512BA300792421 /* AppDelegate.swift in Sources */,
+				4D4D23A71F7A87CF00E854BE /* ChatModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

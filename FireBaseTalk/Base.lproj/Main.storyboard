@@ -277,12 +277,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4K-Nq-0Zy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4159.1999999999998" y="-299.10044977511245"/>
+            <point key="canvasLocation" x="4191" y="-676"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="73y-iY-VUt">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" id="pBm-if-b8z" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="pBm-if-b8z" customClass="ChatViewController" customModule="FireBaseTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VYn-OQ-eS2"/>
                         <viewControllerLayoutGuide type="bottom" id="l0M-9F-adc"/>
@@ -290,12 +290,41 @@
                     <view key="view" contentMode="scaleToFill" id="MSs-XI-HCd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxy-nU-yxt">
+                                <rect key="frame" x="313" y="617" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="IKm-qq-Ufb"/>
+                                    <constraint firstAttribute="height" constant="30" id="YNK-Yw-KvP"/>
+                                </constraints>
+                                <state key="normal" title="전송"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W9t-yr-059">
+                                <rect key="frame" x="16" y="617" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="DTt-AY-AJw"/>
+                                    <constraint firstAttribute="height" constant="30" id="tJo-dx-NpW"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l0M-9F-adc" firstAttribute="top" secondItem="zxy-nU-yxt" secondAttribute="bottom" constant="20" id="3Rq-Kw-uSQ"/>
+                            <constraint firstItem="zxy-nU-yxt" firstAttribute="trailing" secondItem="MSs-XI-HCd" secondAttribute="trailingMargin" id="A5f-33-Ys5"/>
+                            <constraint firstItem="W9t-yr-059" firstAttribute="leading" secondItem="MSs-XI-HCd" secondAttribute="leadingMargin" id="LMh-Yi-9IQ"/>
+                            <constraint firstItem="l0M-9F-adc" firstAttribute="top" secondItem="W9t-yr-059" secondAttribute="bottom" constant="20" id="e62-Gu-vde"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sendButton" destination="zxy-nU-yxt" id="vE2-cX-Elb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBk-Ix-dc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4932" y="-676"/>
+            <point key="canvasLocation" x="4932" y="-676.01199400299856"/>
         </scene>
         <!--Account-->
         <scene sceneID="YlZ-CF-F8V">
@@ -333,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hq7-9a-Zae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4904.8000000000002" y="34.632683658170919"/>
+            <point key="canvasLocation" x="4190" y="35"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6iZ-Kt-LBJ">
