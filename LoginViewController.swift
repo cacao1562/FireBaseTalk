@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
     func loginEvent() {
         
         if ( email.text!.isEmpty || password.text!.isEmpty) {
-            self.view.makeToast("이메일 패스워드를 입력하세요", duration: 1.0, position: .bottom)
+            self.view.makeToast("이메일 패스워드를 입력하세요", duration: 1.0, position: .top)
             return
         } else {
         spinner.startAnimating()

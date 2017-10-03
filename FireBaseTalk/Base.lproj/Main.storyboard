@@ -320,6 +320,7 @@
                     </view>
                     <connections>
                         <outlet property="sendButton" destination="zxy-nU-yxt" id="vE2-cX-Elb"/>
+                        <outlet property="textfield_message" destination="W9t-yr-059" id="MgR-JU-YvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBk-Ix-dc0" userLabel="First Responder" sceneMemberID="firstResponder"/>

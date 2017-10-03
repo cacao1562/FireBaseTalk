@@ -5,15 +5,19 @@ import Firebase
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet var textfield_message: UITextField!
     @IBOutlet var sendButton: UIButton!
-    
+    var uid : String?
+    var chatRoomUid : String?
     
     public var destinationUid: String?  //채팅할 대상의 uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        uid = Auth.auth().currentUser?.uid
         sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+        checkChatRoom()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,12 +26,32 @@ class ChatViewController: UIViewController {
     }
     
     func createRoom() {
-        let createRoomInfo = [
-            "uid":Auth.auth().currentUser?.uid,
-            "destinationUid" : destinationUid
+        let createRoomInfo : Dictionary<String,Any> = [ "users" : [
+            uid! : true,
+            destinationUid! : true
+            ]
         ]
-        Database.database().reference().child("chatrooms").childByAutoId().setValue(createRoomInfo)
+        if (chatRoomUid == nil) {
+            //방 생성 코드
+              Database.database().reference().child("chatrooms").childByAutoId().setValue(createRoomInfo)
+        } else {
+            let value : Dictionary<String,Any> = [
+                "comments":[
+                    "uid" : uid!,
+                    "message" : textfield_message.text!
+                ]
+            ]
+            Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value)
+        }
+      
     }
   
+    func checkChatRoom() {
+        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value,with: { (datasnapshot) in
+            for item in datasnapshot.children.allObjects as! [DataSnapshot] {
+                self.chatRoomUid = item.key
+            }
+        })
+    }
 
 }
