@@ -309,17 +309,40 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e6U-eC-DLs">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="sbp-uO-xyc">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sbp-uO-xyc" id="L1v-Sw-qAn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pBm-if-b8z" id="xlp-jt-fJH"/>
+                                    <outlet property="delegate" destination="pBm-if-b8z" id="Iqa-2C-tCq"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="l0M-9F-adc" firstAttribute="top" secondItem="zxy-nU-yxt" secondAttribute="bottom" constant="20" id="3Rq-Kw-uSQ"/>
+                            <constraint firstItem="zxy-nU-yxt" firstAttribute="top" secondItem="e6U-eC-DLs" secondAttribute="bottom" constant="8" id="4Wv-DI-vDW"/>
                             <constraint firstItem="zxy-nU-yxt" firstAttribute="trailing" secondItem="MSs-XI-HCd" secondAttribute="trailingMargin" id="A5f-33-Ys5"/>
+                            <constraint firstAttribute="trailing" secondItem="e6U-eC-DLs" secondAttribute="trailing" id="GaJ-Lq-hw8"/>
+                            <constraint firstItem="e6U-eC-DLs" firstAttribute="top" secondItem="MSs-XI-HCd" secondAttribute="top" id="Hh6-U1-A49"/>
                             <constraint firstItem="W9t-yr-059" firstAttribute="leading" secondItem="MSs-XI-HCd" secondAttribute="leadingMargin" id="LMh-Yi-9IQ"/>
                             <constraint firstItem="l0M-9F-adc" firstAttribute="top" secondItem="W9t-yr-059" secondAttribute="bottom" constant="20" id="e62-Gu-vde"/>
+                            <constraint firstItem="e6U-eC-DLs" firstAttribute="leading" secondItem="MSs-XI-HCd" secondAttribute="leading" id="ibe-Bk-0Z3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="sendButton" destination="zxy-nU-yxt" id="vE2-cX-Elb"/>
+                        <outlet property="tableview" destination="e6U-eC-DLs" id="5PF-LE-aR8"/>
                         <outlet property="textfield_message" destination="W9t-yr-059" id="MgR-JU-YvF"/>
                     </connections>
                 </viewController>

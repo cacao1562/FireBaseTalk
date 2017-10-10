@@ -27,10 +27,17 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             self.array.removeAll()  //중복삭제
             
+            let myUid = Auth.auth().currentUser?.uid
+            
             for child in snapshot.children{
                 let fchild = child as! DataSnapshot
                 let userModel = UserModel()
                 userModel.setValuesForKeys(fchild.value as! [String : Any])
+                
+                if(userModel.uid == myUid) {
+                    continue
+                }
+                
                 self.array.append(userModel)
             }
             
