@@ -313,13 +313,88 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="sbp-uO-xyc">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyMessageCell" id="sbp-uO-xyc" customClass="MyMessageCell" customModule="FireBaseTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sbp-uO-xyc" id="L1v-Sw-qAn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_blue" translatesAutoresizingMaskIntoConstraints="NO" id="Min-CU-hoU">
+                                                    <rect key="frame" x="315" y="1" width="62" height="41"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCV-BM-6WL">
+                                                    <rect key="frame" x="325" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Min-CU-hoU" firstAttribute="leading" secondItem="rCV-BM-6WL" secondAttribute="leading" constant="-10" id="6H9-SG-Fiq"/>
+                                                <constraint firstItem="rCV-BM-6WL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L1v-Sw-qAn" secondAttribute="leadingMargin" constant="65" id="FrD-8r-e7P"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rCV-BM-6WL" secondAttribute="bottom" constant="3.5" id="Ynl-Fd-t00"/>
+                                                <constraint firstItem="rCV-BM-6WL" firstAttribute="trailing" secondItem="L1v-Sw-qAn" secondAttribute="trailingMargin" id="fji-Tv-aS4"/>
+                                                <constraint firstItem="Min-CU-hoU" firstAttribute="bottom" secondItem="rCV-BM-6WL" secondAttribute="bottom" constant="10" id="gYX-MU-ZK1"/>
+                                                <constraint firstItem="Min-CU-hoU" firstAttribute="top" secondItem="rCV-BM-6WL" secondAttribute="top" constant="-10" id="i0d-QB-7SI"/>
+                                                <constraint firstItem="Min-CU-hoU" firstAttribute="trailing" secondItem="rCV-BM-6WL" secondAttribute="trailing" constant="10" id="kyj-So-ugK"/>
+                                                <constraint firstItem="rCV-BM-6WL" firstAttribute="top" secondItem="L1v-Sw-qAn" secondAttribute="topMargin" constant="3" id="rkG-n8-AIr"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label_message" destination="rCV-BM-6WL" id="EpI-lf-yiS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationMessageCell" id="102-qN-w25" customClass="DestinationMessageCell" customModule="FireBaseTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="102-qN-w25" id="un9-ZA-a83">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_gray" translatesAutoresizingMaskIntoConstraints="NO" id="OiM-vs-Pvw">
+                                                    <rect key="frame" x="48" y="1" width="62" height="41"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-1j-f84">
+                                                    <rect key="frame" x="58" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w67-p5-SZT">
+                                                    <rect key="frame" x="11" y="4" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="bg0-nN-CI2"/>
+                                                        <constraint firstAttribute="height" constant="28" id="uB4-bY-Dwx"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-dv-UES">
+                                                    <rect key="frame" x="12" y="32" width="27" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OiM-vs-Pvw" firstAttribute="bottom" secondItem="OgH-1j-f84" secondAttribute="bottom" constant="10" id="5nt-QI-029"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="OgH-1j-f84" secondAttribute="trailing" constant="65" id="5rO-Al-BF8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OgH-1j-f84" secondAttribute="bottom" constant="3.5" id="Alx-vd-eqa"/>
+                                                <constraint firstItem="OgH-1j-f84" firstAttribute="leading" secondItem="un9-ZA-a83" secondAttribute="leadingMargin" constant="50" id="Gn5-UE-3Tm"/>
+                                                <constraint firstItem="OiM-vs-Pvw" firstAttribute="trailing" secondItem="OgH-1j-f84" secondAttribute="trailing" constant="10" id="Iyv-Mr-nh0"/>
+                                                <constraint firstItem="OiM-vs-Pvw" firstAttribute="leading" secondItem="OgH-1j-f84" secondAttribute="leading" constant="-10" id="TWM-Wi-cO1"/>
+                                                <constraint firstItem="w67-p5-SZT" firstAttribute="leading" secondItem="un9-ZA-a83" secondAttribute="leading" constant="11" id="VJt-ce-tSk"/>
+                                                <constraint firstItem="OiM-vs-Pvw" firstAttribute="top" secondItem="OgH-1j-f84" secondAttribute="top" constant="-10" id="fAG-Od-Lir"/>
+                                                <constraint firstItem="w67-p5-SZT" firstAttribute="top" secondItem="un9-ZA-a83" secondAttribute="top" constant="4" id="pcA-rs-oar"/>
+                                                <constraint firstItem="mmx-dv-UES" firstAttribute="top" secondItem="w67-p5-SZT" secondAttribute="bottom" id="swd-KK-ZfJ"/>
+                                                <constraint firstItem="OgH-1j-f84" firstAttribute="top" secondItem="un9-ZA-a83" secondAttribute="topMargin" constant="3" id="w2O-sy-jjl"/>
+                                                <constraint firstItem="mmx-dv-UES" firstAttribute="leading" secondItem="un9-ZA-a83" secondAttribute="leading" constant="12" id="zNy-eC-f9N"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview_profile" destination="w67-p5-SZT" id="Tpc-0g-mei"/>
+                                            <outlet property="label_message" destination="OgH-1j-f84" id="WMJ-mA-Tph"/>
+                                            <outlet property="label_name" destination="mmx-dv-UES" id="kUw-vA-7Dn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -434,5 +509,7 @@
         <image name="ic_chat" width="24" height="24"/>
         <image name="ic_people" width="24" height="24"/>
         <image name="loading_icon" width="128" height="128"/>
+        <image name="message_blue" width="11" height="9"/>
+        <image name="message_gray" width="12" height="8"/>
     </resources>
 </document>
