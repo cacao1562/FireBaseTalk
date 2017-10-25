@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -411,11 +411,12 @@
                             <constraint firstAttribute="trailing" secondItem="e6U-eC-DLs" secondAttribute="trailing" id="GaJ-Lq-hw8"/>
                             <constraint firstItem="e6U-eC-DLs" firstAttribute="top" secondItem="MSs-XI-HCd" secondAttribute="top" id="Hh6-U1-A49"/>
                             <constraint firstItem="W9t-yr-059" firstAttribute="leading" secondItem="MSs-XI-HCd" secondAttribute="leadingMargin" id="LMh-Yi-9IQ"/>
-                            <constraint firstItem="l0M-9F-adc" firstAttribute="top" secondItem="W9t-yr-059" secondAttribute="bottom" constant="20" id="e62-Gu-vde"/>
+                            <constraint firstItem="W9t-yr-059" firstAttribute="centerY" secondItem="zxy-nU-yxt" secondAttribute="centerY" id="NDP-KU-tFl"/>
                             <constraint firstItem="e6U-eC-DLs" firstAttribute="leading" secondItem="MSs-XI-HCd" secondAttribute="leading" id="ibe-Bk-0Z3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="3Rq-Kw-uSQ" id="I3p-SL-Zyr"/>
                         <outlet property="sendButton" destination="zxy-nU-yxt" id="vE2-cX-Elb"/>
                         <outlet property="tableview" destination="e6U-eC-DLs" id="5PF-LE-aR8"/>
                         <outlet property="textfield_message" destination="W9t-yr-059" id="MgR-JU-YvF"/>

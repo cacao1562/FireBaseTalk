@@ -8,7 +8,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
   
     
-
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    
     @IBOutlet var tableview: UITableView!
     
     @IBOutlet var textfield_message: UITextField! //{ didset { textfield_message.delegate = self } }
@@ -19,6 +20,54 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var comments : [ChatModel.Comment] = []
     var userModel : UserModel?
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textfield_message.delegate = self
+        uid = Auth.auth().currentUser?.uid
+        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+        checkChatRoom()
+        self.tabBarController?.tabBar.isHidden = true
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    //시작
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    //종료
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func keyboardWillShow(notification : Notification) {
+        if let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.bottomConstraint.constant = keyboardSize.height
+        }
+        UIView.animate(withDuration: 0, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {  //키보드가 밀릴때
+            (complete) in
+            if self.comments.count > 0 {
+                self.tableview.scrollToRow(at: IndexPath(item:self.comments.count-1,section:0), at: UITableViewScrollPosition.bottom, animated: true)
+            }
+        })
+        
+    }
+    
+    func keyboardWillHide(notification : Notification) {
+        self.bottomConstraint.constant = 20
+        self.view.layoutIfNeeded()
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -67,13 +116,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     public var destinationUid: String?  //채팅할 대상의 uid
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        textfield_message.delegate = self
-        uid = Auth.auth().currentUser?.uid
-        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
-        checkChatRoom()
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -102,7 +145,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     "message" : textfield_message.text!
                 
             ]
-            Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value)
+            Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value, withCompletionBlock: { (err, ref) in
+                self.textfield_message.text = ""
+            })
         }
       
     }
@@ -140,6 +185,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.comments.append(comment!)
             }
             self.tableview.reloadData()
+            
+            if self.comments.count > 0 {
+                self.tableview.scrollToRow(at: IndexPath(item:self.comments.count-1,section:0), at: UITableViewScrollPosition.bottom, animated: true)
+            }
         })
     }
     
