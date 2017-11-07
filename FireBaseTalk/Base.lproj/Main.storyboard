@@ -461,7 +461,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RowCell" rowHeight="70" id="EpO-iD-cGg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RowCell" rowHeight="70" id="EpO-iD-cGg" customClass="CustomCell" customModule="FireBaseTalk" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EpO-iD-cGg" id="K4k-aX-kMU">
@@ -481,14 +481,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REC-Rt-ufo">
+                                                    <rect key="frame" x="58" y="39" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="REC-Rt-ufo" secondAttribute="bottom" constant="1.5" id="2J2-ZL-fMh"/>
                                                 <constraint firstItem="QGS-y3-fbc" firstAttribute="centerY" secondItem="K4k-aX-kMU" secondAttribute="centerY" id="SRn-do-cIb"/>
+                                                <constraint firstItem="REC-Rt-ufo" firstAttribute="leading" secondItem="QGS-y3-fbc" secondAttribute="trailing" constant="8" id="h17-QJ-MxT"/>
                                                 <constraint firstItem="QGS-y3-fbc" firstAttribute="leading" secondItem="K4k-aX-kMU" secondAttribute="leading" id="nJH-1O-uaS"/>
+                                                <constraint firstItem="REC-Rt-ufo" firstAttribute="top" secondItem="HjH-qj-LD6" secondAttribute="bottom" constant="8" id="qUa-8e-UZo"/>
                                                 <constraint firstItem="HjH-qj-LD6" firstAttribute="top" secondItem="K4k-aX-kMU" secondAttribute="topMargin" constant="2" id="sgX-fA-kuK"/>
                                                 <constraint firstItem="HjH-qj-LD6" firstAttribute="leading" secondItem="QGS-y3-fbc" secondAttribute="trailing" constant="8" id="tOH-sT-07E"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview" destination="QGS-y3-fbc" id="0JS-r2-ANi"/>
+                                            <outlet property="label_lastmessage" destination="REC-Rt-ufo" id="KK0-h3-ktV"/>
+                                            <outlet property="label_title" destination="HjH-qj-LD6" id="g6V-uj-eDr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
