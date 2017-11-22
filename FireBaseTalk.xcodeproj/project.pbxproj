@@ -418,7 +418,7 @@
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = FireBaseTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Test.FireBaseTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = Ios.FireBaseTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -432,7 +432,7 @@
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = FireBaseTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Test.FireBaseTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = Ios.FireBaseTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

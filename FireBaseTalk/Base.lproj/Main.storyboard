@@ -463,7 +463,7 @@
             </objects>
             <point key="canvasLocation" x="3218" y="425"/>
         </scene>
-        <!--Chat-->
+        <!--Chat Rooms View Controller-->
         <scene sceneID="b6Q-2Y-BHV">
             <objects>
                 <viewController id="2kb-2L-svx" customClass="ChatRoomsViewController" customModule="FireBaseTalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -493,16 +493,22 @@
                                                         <constraint firstAttribute="width" constant="50" id="jl6-aL-WKJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjH-qj-LD6">
-                                                    <rect key="frame" x="58" y="10" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjH-qj-LD6">
+                                                    <rect key="frame" x="58" y="13" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REC-Rt-ufo">
-                                                    <rect key="frame" x="58" y="39" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REC-Rt-ufo">
+                                                    <rect key="frame" x="58" y="45.5" width="26.5" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012.12.12 23:23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTo-UA-cvd">
+                                                    <rect key="frame" x="283" y="10" width="82" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -511,14 +517,16 @@
                                                 <constraint firstItem="QGS-y3-fbc" firstAttribute="centerY" secondItem="K4k-aX-kMU" secondAttribute="centerY" id="SRn-do-cIb"/>
                                                 <constraint firstItem="REC-Rt-ufo" firstAttribute="leading" secondItem="QGS-y3-fbc" secondAttribute="trailing" constant="8" id="h17-QJ-MxT"/>
                                                 <constraint firstItem="QGS-y3-fbc" firstAttribute="leading" secondItem="K4k-aX-kMU" secondAttribute="leading" id="nJH-1O-uaS"/>
-                                                <constraint firstItem="REC-Rt-ufo" firstAttribute="top" secondItem="HjH-qj-LD6" secondAttribute="bottom" constant="8" id="qUa-8e-UZo"/>
                                                 <constraint firstItem="HjH-qj-LD6" firstAttribute="top" secondItem="K4k-aX-kMU" secondAttribute="topMargin" constant="2" id="sgX-fA-kuK"/>
                                                 <constraint firstItem="HjH-qj-LD6" firstAttribute="leading" secondItem="QGS-y3-fbc" secondAttribute="trailing" constant="8" id="tOH-sT-07E"/>
+                                                <constraint firstItem="QTo-UA-cvd" firstAttribute="top" secondItem="K4k-aX-kMU" secondAttribute="top" constant="10" id="v2k-oJ-ovS"/>
+                                                <constraint firstAttribute="trailing" secondItem="QTo-UA-cvd" secondAttribute="trailing" constant="10" id="zwA-xu-7dc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageview" destination="QGS-y3-fbc" id="0JS-r2-ANi"/>
                                             <outlet property="label_lastmessage" destination="REC-Rt-ufo" id="KK0-h3-ktV"/>
+                                            <outlet property="label_timestamp" destination="QTo-UA-cvd" id="JQX-5I-yeH"/>
                                             <outlet property="label_title" destination="HjH-qj-LD6" id="g6V-uj-eDr"/>
                                         </connections>
                                     </tableViewCell>
@@ -537,14 +545,14 @@
                             <constraint firstAttribute="trailing" secondItem="LnZ-SQ-y28" secondAttribute="trailing" id="VTe-gy-p7e"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="ic_chat" selectedImage="ic_chat" id="yqb-Oq-eu6"/>
+                    <navigationItem key="navigationItem" id="VGJ-jd-R8b"/>
                     <connections>
                         <outlet property="tableview" destination="LnZ-SQ-y28" id="1mU-Yx-6sF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hq7-9a-Zae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4189.6000000000004" y="34.632683658170919"/>
+            <point key="canvasLocation" x="4761" y="35"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6iZ-Kt-LBJ">
@@ -558,7 +566,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="r5o-W1-Tkg" kind="relationship" relationship="viewControllers" id="VGb-sd-3GM"/>
-                        <segue destination="2kb-2L-svx" kind="relationship" relationship="viewControllers" id="Lx3-cf-qCo"/>
+                        <segue destination="yNy-rB-hta" kind="relationship" relationship="viewControllers" id="Lx3-cf-qCo"/>
                         <segue destination="yBP-FV-89t" kind="relationship" relationship="viewControllers" id="k5M-Q4-Oyh"/>
                     </connections>
                 </tabBarController>
@@ -584,6 +592,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBa-hH-LlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3220" y="-299.10044977511245"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="rpT-gs-Tf2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yNy-rB-hta" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chat" image="ic_chat" selectedImage="ic_chat" id="yqb-Oq-eu6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nyq-az-4J1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2kb-2L-svx" kind="relationship" relationship="rootViewController" id="FeD-5b-U61"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kC8-rI-WUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4014" y="35"/>
         </scene>
     </scenes>
     <resources>
