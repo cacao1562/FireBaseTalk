@@ -31,6 +31,7 @@
 		4D11C43D1FAC394E00036880 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
 		4D4D23A31F7A86A500E854BE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		4D4D23A61F7A87CF00E854BE /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		4D5A4ACC1FCDBC670001C2F4 /* FireBaseTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireBaseTalk.entitlements; sourceTree = "<group>"; };
 		4D6A05B61F5641F400B38067 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		4DB4B0F41F68220200B584B8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4DC909E91F512BA300792421 /* FireBaseTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireBaseTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +108,7 @@
 		4DC909EB1F512BA300792421 /* FireBaseTalk */ = {
 			isa = PBXGroup;
 			children = (
+				4D5A4ACC1FCDBC670001C2F4 /* FireBaseTalk.entitlements */,
 				4D11C43C1FAC390100036880 /* Tapbar */,
 				4D4D23A51F7A879C00E854BE /* Model */,
 				4DC909EC1F512BA300792421 /* AppDelegate.swift */,
@@ -171,6 +173,14 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = UL22BZ9D7W;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -415,10 +425,11 @@
 			baseConfigurationReference = 33B136B7ADACEF5F85FF7AFB /* Pods-FireBaseTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FireBaseTalk/FireBaseTalk.entitlements;
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = FireBaseTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Ios.FireBaseTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = Test.FireBaseTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -429,10 +440,11 @@
 			baseConfigurationReference = B7B631539F36DF38B6E99D2A /* Pods-FireBaseTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FireBaseTalk/FireBaseTalk.entitlements;
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = FireBaseTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Ios.FireBaseTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = Test.FireBaseTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

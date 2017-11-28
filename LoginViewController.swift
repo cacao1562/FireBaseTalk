@@ -48,9 +48,12 @@ class LoginViewController: UIViewController {
             (auth, user) in
             if (user != nil) {
                 let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewTabBarController") as! UITabBarController
-                
                 self.spinner.stopAnimating()
                 self.present(view, animated: true)
+                
+                let uid = Auth.auth().currentUser?.uid
+                let token = InstanceID.instanceID().token()
+                Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken":token!])
             }
         }
     }
