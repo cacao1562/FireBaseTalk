@@ -2,6 +2,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -18,7 +19,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var chatRoomUid : String?
     
     var comments : [ChatModel.Comment] = []
-    var userModel : UserModel?
+    var destinationUsermodel : UserModel?
     
     
     override func viewDidLoad() {
@@ -94,11 +95,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             return view
         } else {
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
-            view.label_name.text = userModel?.name
+            view.label_name.text = destinationUsermodel?.name
             view.label_message.text = self.comments[indexPath.row].message
             view.label_message.numberOfLines = 0
             
-            let url = URL(string:(self.userModel?.profileImageUrl)!)
+            let url = URL(string:(self.destinationUsermodel?.profileImageUrl)!)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
                 DispatchQueue.main.async {
                     view.imageview_profile.image = UIImage(data: data!)
@@ -152,10 +153,28 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     "timestamp" : ServerValue.timestamp()
             ]
             Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value, withCompletionBlock: { (err, ref) in
+                self.sendgcm()
                 self.textfield_message.text = ""
             })
         }
       
+    }
+    
+    func sendgcm() {
+        let url = "https://gcm-http.googleapis.com/gcm/send"
+        let header : HTTPHeaders = [
+            "Content-Type":"application/json",
+            "Authorization":"key=AIzaSyDDd8qaqXDF2hnnxN_mWXCUh9jK7wij_cw"
+        ]
+        var notificationModel = NotificationModel()
+        notificationModel.to = destinationUsermodel?.pushToken
+        notificationModel.notification.title = "보낸이 아이디"
+        notificationModel.notification.text = textfield_message.text
+        
+        let params = notificationModel.toJSON()
+        Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            print(response.result.value)
+        }
     }
   
     func checkChatRoom() {
@@ -177,8 +196,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getDestinationInfo() {
         Database.database().reference().child("users").child(self.destinationUid!).observeSingleEvent(of: DataEventType.value , with : { (datasnapshot) in
-            self.userModel = UserModel()
-            self.userModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
+            self.destinationUsermodel = UserModel()
+            self.destinationUsermodel?.setValuesForKeys(datasnapshot.value as! [String:Any])
             self.getMessageList()
         })
     }
