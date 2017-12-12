@@ -166,10 +166,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             "Content-Type":"application/json",
             "Authorization":"key=AIzaSyDDd8qaqXDF2hnnxN_mWXCUh9jK7wij_cw"
         ]
+        
+        let userName = Auth.auth().currentUser?.displayName
+        
         var notificationModel = NotificationModel()
         notificationModel.to = destinationUsermodel?.pushToken
-        notificationModel.notification.title = "보낸이 아이디"
+        notificationModel.notification.title = userName
         notificationModel.notification.text = textfield_message.text
+        notificationModel.data.title = userName
+        notificationModel.data.text = textfield_message.text
         
         let params = notificationModel.toJSON()
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
