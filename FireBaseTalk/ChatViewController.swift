@@ -3,6 +3,7 @@
 import UIKit
 import Firebase
 import Alamofire
+import Kingfisher
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
@@ -100,13 +101,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             view.label_message.numberOfLines = 0
             
             let url = URL(string:(self.destinationUsermodel?.profileImageUrl)!)
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
-                DispatchQueue.main.async {
-                    view.imageview_profile.image = UIImage(data: data!)
-                    view.imageview_profile.layer.cornerRadius = view.imageview_profile.frame.width/2
-                    view.imageview_profile.clipsToBounds = true
-                }
-            }).resume()
+            view.imageview_profile.layer.cornerRadius = view.imageview_profile.frame.width/2
+            view.imageview_profile.clipsToBounds = true
+            view.imageview_profile.kf.setImage(with: url)
+//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
+//                DispatchQueue.main.async {
+//                    view.imageview_profile.image = UIImage(data: data!)
+//
+//                }
+//            }).resume()
             if let time = self.comments[indexPath.row].timestamp {
                 view.label_timestamp.text = time.toDayTime
             }
