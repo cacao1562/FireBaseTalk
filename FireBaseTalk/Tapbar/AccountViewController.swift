@@ -1,6 +1,7 @@
 
 
 import UIKit
+import Firebase
 
 class AccountViewController: UIViewController {
 
@@ -25,6 +26,12 @@ class AccountViewController: UIViewController {
         }
         alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in
             
+            if let textfield = alertController.textFields?.first{
+                let dic = ["comment":textfield.text!]
+                let uid = Auth.auth().currentUser?.uid
+                Database.database().reference().child("users").child(uid!).updateChildValues(dic)
+                
+            }
         }))
         alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: { (action) in
             
