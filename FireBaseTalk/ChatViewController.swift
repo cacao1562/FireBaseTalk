@@ -22,6 +22,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var comments : [ChatModel.Comment] = []
     var destinationUsermodel : UserModel?
     
+    var dataBaseRef : DatabaseReference?
+    var observe : UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
         self.tabBarController?.tabBar.isHidden = false
+        
+        dataBaseRef?.removeObserver(withHandle: observe!)
     }
     
     func keyboardWillShow(notification : Notification) {
@@ -210,18 +214,26 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     func getMessageList() {
-        Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments").observe(DataEventType.value , with: { (datasnapshot) in
+        dataBaseRef = Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments")
+        observe = dataBaseRef?.observe(DataEventType.value , with: { (datasnapshot) in
             self.comments.removeAll()
-            
+            var readUserDic : Dictionary<String,AnyObject> = [:]
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
+                let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                comment?.readUsers[self.uid!] = true
+                readUserDic[key] = comment?.toJSON() as! NSDictionary //Firebase가 NSDictionary만 지원
                 self.comments.append(comment!)
             }
-            self.tableview.reloadData()
-            
-            if self.comments.count > 0 {
-                self.tableview.scrollToRow(at: IndexPath(item:self.comments.count-1,section:0), at: UITableViewScrollPosition.bottom, animated: true)
-            }
+            let nsDic = readUserDic as NSDictionary
+            datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
+                self.tableview.reloadData()
+                
+                if self.comments.count > 0 {
+                    self.tableview.scrollToRow(at: IndexPath(item:self.comments.count-1,section:0), at: UITableViewScrollPosition.bottom, animated: true)
+                }
+            })
+          
         })
     }
     

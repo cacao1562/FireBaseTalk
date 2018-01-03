@@ -50,6 +50,21 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableview.indexPathForSelectedRow{
+            self.tableview.deselectRow(at: index, animated: true)
+        }
+    }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//
+//        if let index = self.tableview.indexPathForSelectedRow{
+//            self.tableview.deselectRow(at: index, animated: true)
+//        }
+//
+//
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.array.count
     }
@@ -86,15 +101,30 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             m.left.equalTo(imageview.snp.right).offset(20)
             }
         label.text = array[indexPath.row].name
+    
         
         let label_comment = cell.label_comment!
         label_comment.snp.makeConstraints { (make) in
-            make.right.equalTo(cell).offset(-5)
-            make.centerY.equalTo(cell)
+            make.centerX.equalTo(cell.uiview_comment_background)
+            make.centerY.equalTo(cell.uiview_comment_background)
         }
         if let comment = array[indexPath.row].comment {
             label_comment.text = comment
         }
+        
+        cell.uiview_comment_background.snp.makeConstraints { (make) in
+            make.right.equalTo(cell).offset(-10)
+            make.centerY.equalTo(cell)
+            if let count = label_comment.text?.count {
+                    make.width.equalTo(count * 13)
+            }
+             else {
+                make.width.equalTo(0)
+                }
+            
+            make.height.equalTo(30)
+        }
+        cell.uiview_comment_background.backgroundColor = UIColor.gray
         
         return cell
     }
@@ -121,11 +151,13 @@ class PeopleViewTableCell : UITableViewCell {
     var imageview : UIImageView = UIImageView()
     var label : UILabel! = UILabel()
     var label_comment : UILabel! = UILabel()
+    var uiview_comment_background : UIView = UIView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(imageview)
         self.addSubview(label)
+        self.addSubview(uiview_comment_background)
         self.addSubview(label_comment)
     }
     
