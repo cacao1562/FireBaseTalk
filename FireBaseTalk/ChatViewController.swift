@@ -97,6 +97,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let time = self.comments[indexPath.row].timestamp {
                 view.label_timestamp.text = time.toDayTime
             }
+            setReadCount(label: view.label_read_counter, position: indexPath.row)
             return view
         } else {
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
@@ -117,6 +118,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let time = self.comments[indexPath.row].timestamp {
                 view.label_timestamp.text = time.toDayTime
             }
+            setReadCount(label: view.label_read_counter, position: indexPath.row)
             return view
         }
         
@@ -213,6 +215,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.getMessageList()
         })
     }
+    
+    func setReadCount(label:UILabel?, position:Int?){
+        let readCount = self.comments[position!].readUsers.count //읽은사람 인원수
+        Database.database().reference().child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: DataEventType.value, with: {(datasnapshot) in
+            
+            let dic = datasnapshot.value as! [String:Any]
+            let noReadCount = dic.count - readCount
+            
+            if (noReadCount > 0){
+                label?.isHidden = false
+                label?.text = String(noReadCount)
+            }else {
+                label?.isHidden = true
+            }
+        })
+    }
+    
+    
     func getMessageList() {
         dataBaseRef = Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments")
         observe = dataBaseRef?.observe(DataEventType.value , with: { (datasnapshot) in
@@ -256,6 +276,7 @@ class MyMessageCell : UITableViewCell {
  
     @IBOutlet var label_message: UILabel!
     @IBOutlet var label_timestamp: UILabel!
+    @IBOutlet weak var label_read_counter: UILabel!
 }
 
 class DestinationMessageCell : UITableViewCell {
@@ -264,6 +285,7 @@ class DestinationMessageCell : UITableViewCell {
     @IBOutlet var imageview_profile: UIImageView!
     @IBOutlet var label_name: UILabel!
     @IBOutlet var label_timestamp: UILabel!
+    @IBOutlet weak var label_read_counter: UILabel!
 }
 
 

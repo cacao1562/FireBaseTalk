@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -335,11 +335,19 @@
                                                     <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-7L-Tgx">
+                                                    <rect key="frame" x="292" y="28" width="6" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Min-CU-hoU" firstAttribute="leading" secondItem="rCV-BM-6WL" secondAttribute="leading" constant="-10" id="6H9-SG-Fiq"/>
+                                                <constraint firstAttribute="bottom" secondItem="9yg-7L-Tgx" secondAttribute="bottom" constant="0.5" id="AH6-qs-RMn"/>
                                                 <constraint firstItem="rCV-BM-6WL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L1v-Sw-qAn" secondAttribute="leadingMargin" constant="65" id="FrD-8r-e7P"/>
                                                 <constraint firstAttribute="trailing" secondItem="mOi-Ni-h6W" secondAttribute="trailing" constant="5" id="NEZ-c8-kDp"/>
+                                                <constraint firstItem="mOi-Ni-h6W" firstAttribute="leading" secondItem="9yg-7L-Tgx" secondAttribute="trailing" constant="4" id="T3T-oz-7fQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="mOi-Ni-h6W" secondAttribute="bottom" constant="4.5" id="Xwf-uO-anf"/>
                                                 <constraint firstItem="mOi-Ni-h6W" firstAttribute="top" secondItem="rCV-BM-6WL" secondAttribute="bottom" constant="16" id="Ynl-Fd-t00"/>
                                                 <constraint firstItem="rCV-BM-6WL" firstAttribute="trailing" secondItem="L1v-Sw-qAn" secondAttribute="trailingMargin" id="fji-Tv-aS4"/>
@@ -351,6 +359,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label_message" destination="rCV-BM-6WL" id="EpI-lf-yiS"/>
+                                            <outlet property="label_read_counter" destination="9yg-7L-Tgx" id="MdN-GS-hW5"/>
                                             <outlet property="label_timestamp" destination="mOi-Ni-h6W" id="oB2-O1-AjC"/>
                                         </connections>
                                     </tableViewCell>
@@ -389,6 +398,12 @@
                                                     <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ED1-bc-KdI">
+                                                    <rect key="frame" x="127" y="28" width="6" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OiM-vs-Pvw" firstAttribute="bottom" secondItem="OgH-1j-f84" secondAttribute="bottom" constant="10" id="5nt-QI-029"/>
@@ -401,9 +416,11 @@
                                                 <constraint firstItem="OiM-vs-Pvw" firstAttribute="leading" secondItem="OgH-1j-f84" secondAttribute="leading" constant="-10" id="TWM-Wi-cO1"/>
                                                 <constraint firstItem="w67-p5-SZT" firstAttribute="leading" secondItem="un9-ZA-a83" secondAttribute="leading" constant="11" id="VJt-ce-tSk"/>
                                                 <constraint firstItem="OiM-vs-Pvw" firstAttribute="top" secondItem="OgH-1j-f84" secondAttribute="top" constant="-10" id="fAG-Od-Lir"/>
+                                                <constraint firstItem="ED1-bc-KdI" firstAttribute="leading" secondItem="4ZB-E0-yqg" secondAttribute="trailing" constant="4" id="nOQ-lc-4iM"/>
                                                 <constraint firstItem="w67-p5-SZT" firstAttribute="top" secondItem="un9-ZA-a83" secondAttribute="top" constant="4" id="pcA-rs-oar"/>
                                                 <constraint firstItem="mmx-dv-UES" firstAttribute="top" secondItem="w67-p5-SZT" secondAttribute="bottom" id="swd-KK-ZfJ"/>
                                                 <constraint firstItem="OgH-1j-f84" firstAttribute="top" secondItem="un9-ZA-a83" secondAttribute="topMargin" constant="3" id="w2O-sy-jjl"/>
+                                                <constraint firstAttribute="bottom" secondItem="ED1-bc-KdI" secondAttribute="bottom" constant="0.5" id="yPO-IV-HVb"/>
                                                 <constraint firstItem="mmx-dv-UES" firstAttribute="leading" secondItem="un9-ZA-a83" secondAttribute="leading" constant="12" id="zNy-eC-f9N"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -411,6 +428,7 @@
                                             <outlet property="imageview_profile" destination="w67-p5-SZT" id="Tpc-0g-mei"/>
                                             <outlet property="label_message" destination="OgH-1j-f84" id="WMJ-mA-Tph"/>
                                             <outlet property="label_name" destination="mmx-dv-UES" id="kUw-vA-7Dn"/>
+                                            <outlet property="label_read_counter" destination="ED1-bc-KdI" id="l87-Lk-x3W"/>
                                             <outlet property="label_timestamp" destination="4ZB-E0-yqg" id="r0C-BR-IkD"/>
                                         </connections>
                                     </tableViewCell>
