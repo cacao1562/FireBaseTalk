@@ -24,6 +24,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var dataBaseRef : DatabaseReference?
     var observe : UInt?
+    var peopleCount : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,10 +219,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func setReadCount(label:UILabel?, position:Int?){
         let readCount = self.comments[position!].readUsers.count //읽은사람 인원수
+        if (peopleCount == nil) {
         Database.database().reference().child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: DataEventType.value, with: {(datasnapshot) in
             
             let dic = datasnapshot.value as! [String:Any]
-            let noReadCount = dic.count - readCount
+            self.peopleCount = dic.count
+            let noReadCount = self.peopleCount! - readCount
             
             if (noReadCount > 0){
                 label?.isHidden = false
@@ -229,7 +232,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }else {
                 label?.isHidden = true
             }
-        })
+         })
+        } else {
+            let noReadCount = self.peopleCount! - readCount
+            if (noReadCount > 0){
+                label?.isHidden = false
+                label?.text = String(noReadCount)
+            }else {
+                label?.isHidden = true
+            }
+        }
     }
     
     
@@ -241,18 +253,28 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
                 let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
-                comment?.readUsers[self.uid!] = true
+                let comment_modify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                
+                comment_modify?.readUsers[self.uid!] = true
                 readUserDic[key] = comment?.toJSON() as! NSDictionary //Firebase가 NSDictionary만 지원
                 self.comments.append(comment!)
             }
             let nsDic = readUserDic as NSDictionary
+            if(!(self.comments.last?.readUsers.keys.contains(self.uid!))!) {
+                
+            
             datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
                 self.tableview.reloadData()
-                
                 if self.comments.count > 0 {
                     self.tableview.scrollToRow(at: IndexPath(item:self.comments.count-1,section:0), at: UITableViewScrollPosition.bottom, animated: true)
                 }
-            })
+             })
+            }else {
+                self.tableview.reloadData()
+                if self.comments.count > 0 {
+                    self.tableview.scrollToRow(at: IndexPath(item:self.comments.count-1,section:0), at: UITableViewScrollPosition.bottom, animated: true)
+                }
+            }
           
         })
     }
