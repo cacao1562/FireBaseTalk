@@ -4,6 +4,7 @@ import UIKit
 import SnapKit
 import Firebase
 import Kingfisher
+import BEMCheckBox
 
 class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -47,7 +48,19 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
         })
-
+        
+        var selectFriendButton = UIButton()
+        view.addSubview(selectFriendButton)
+        selectFriendButton.snp.makeConstraints { (m) in
+            m.bottom.equalTo(view).offset(-70)
+            m.right.equalTo(view).offset(-20)
+        }
+        selectFriendButton.backgroundColor = UIColor.black
+        selectFriendButton.addTarget(self, action: #selector(showSelectFriendController), for: .touchUpInside)
+    }
+    
+    func showSelectFriendController() {
+        self.performSegue(withIdentifier: "SelectFriendSegue", sender: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
