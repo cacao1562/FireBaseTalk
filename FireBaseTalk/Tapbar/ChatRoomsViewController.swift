@@ -57,6 +57,10 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.imageview.layer.cornerRadius = cell.imageview.frame.width/2
             cell.imageview.layer.masksToBounds = true
             cell.imageview.kf.setImage(with: url)
+            
+            if (self.chatrooms[indexPath.row].comments.keys.count == 0) { //마지막메시지 없을경우
+                return
+            }
 //            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, err) in
 //              
 //                DispatchQueue.main.sync {
@@ -76,11 +80,20 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         tableView.deselectRow(at: indexPath, animated: true)
-        let destinationUid = self.destinationUsers[indexPath.row]
-        let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        view.destinationUid = destinationUid
-        self.navigationController?.pushViewController(view, animated: true)
+        if (self.destinationUsers[indexPath.row].count > 2 ){ //3명 이상일때
+            let destinationUid = self.destinationUsers[indexPath.row]
+            let view = self.storyboard?.instantiateViewController(withIdentifier: "GroupChatRoomViewController") as! GroupChatRoomViewController
+            //view.destinationUid = destinationUid
+            self.navigationController?.pushViewController(view, animated: true)
+        }else {
+            let destinationUid = self.destinationUsers[indexPath.row]
+            let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            view.destinationUid = destinationUid
+            self.navigationController?.pushViewController(view, animated: true)
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

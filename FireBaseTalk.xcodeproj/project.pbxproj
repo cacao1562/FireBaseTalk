@@ -23,6 +23,7 @@
 		4DC90A011F51415900792421 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DC90A001F51415900792421 /* RemoteConfigDefaults.plist */; };
 		4DC90A031F51491E00792421 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC90A021F51491E00792421 /* LoginViewController.swift */; };
 		4DC90A051F51527000792421 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC90A041F51527000792421 /* SignupViewController.swift */; };
+		4DD3BA41202DBB7600A1FA92 /* GroupChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3BA40202DBB7600A1FA92 /* GroupChatRoomViewController.swift */; };
 		4DE2B9821FD6F8E10089143F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2B9811FD6F8E10089143F /* NotificationModel.swift */; };
 		4DFBACB31FEA33C500B320CA /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFBACB21FEA33C500B320CA /* AccountViewController.swift */; };
 		C9405A4F84D52D5A5A84A941 /* Pods_FireBaseTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5A6EA400CAC1E141FE4304 /* Pods_FireBaseTalk.framework */; };
@@ -50,6 +51,7 @@
 		4DC90A001F51415900792421 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		4DC90A021F51491E00792421 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		4DC90A041F51527000792421 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		4DD3BA40202DBB7600A1FA92 /* GroupChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatRoomViewController.swift; sourceTree = "<group>"; };
 		4DE2B9811FD6F8E10089143F /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		4DFBACB21FEA33C500B320CA /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		7A5A6EA400CAC1E141FE4304 /* Pods_FireBaseTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireBaseTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 				4D11C43D1FAC394E00036880 /* ChatRoomsViewController.swift */,
 				4DFBACB21FEA33C500B320CA /* AccountViewController.swift */,
 				4D3A9432201C463D006BAA0D /* SelectFriendViewController.swift */,
+				4DD3BA40202DBB7600A1FA92 /* GroupChatRoomViewController.swift */,
 			);
 			path = Tapbar;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				4D0B23E01F52B1A400633893 /* Toast.swift in Sources */,
 				4D6A05B71F5641F400B38067 /* PeopleViewController.swift in Sources */,
 				4DC90A051F51527000792421 /* SignupViewController.swift in Sources */,
+				4DD3BA41202DBB7600A1FA92 /* GroupChatRoomViewController.swift in Sources */,
 				4DC909ED1F512BA300792421 /* AppDelegate.swift in Sources */,
 				4D4D23A71F7A87CF00E854BE /* ChatModel.swift in Sources */,
 			);

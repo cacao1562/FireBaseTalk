@@ -4,10 +4,12 @@ import UIKit
 import Firebase
 import BEMCheckBox
 
-class SelectFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class SelectFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BEMCheckBoxDelegate {
+    
+    var users = Dictionary<String,Bool>()
     var array: [UserModel] = []
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -18,8 +20,29 @@ class SelectFriendViewController: UIViewController, UITableViewDataSource, UITab
         let view = tableView.dequeueReusableCell(withIdentifier: "SelectFriendCell", for: indexPath) as! SelectFriendCell
         view.labelName.text = array[indexPath.row].name
         view.imageviewProfile.kf.setImage(with: URL(string:array[indexPath.row].profileImageUrl!))
+        view.checkbox.delegate = self
+        view.checkbox.tag = indexPath.row
+        
         return view
     }
+    
+    func didTap(_ checkBox: BEMCheckBox) {
+        
+        if (checkBox.on) {
+            users[self.array[checkBox.tag].uid!] = true
+        }else {
+            users.removeValue(forKey: self.array[checkBox.tag].uid!)
+        }
+    }
+    
+    func createRoom(){
+        var myUid = Auth.auth().currentUser?.uid
+        users[myUid!] = true
+        let nsDic = users as! NSDictionary
+        Database.database().reference().child("chatrooms").childByAutoId().child("users").setValue(nsDic)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +69,7 @@ class SelectFriendViewController: UIViewController, UITableViewDataSource, UITab
                 
             }
         })
+        button.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
     }
 
     override func didReceiveMemoryWarning() {

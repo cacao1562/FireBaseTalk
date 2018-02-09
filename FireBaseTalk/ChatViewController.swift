@@ -260,6 +260,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.comments.append(comment!)
             }
             let nsDic = readUserDic as NSDictionary
+            
+            if(self.comments.last?.readUsers.keys == nil) {
+                return
+            }
             if(!(self.comments.last?.readUsers.keys.contains(self.uid!))!) {
                 
             

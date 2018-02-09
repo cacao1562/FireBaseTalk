@@ -91,7 +91,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
                                         <color key="value" red="1" green="0.43660162499999999" blue="0.39253519450000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -273,7 +273,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Th-30-LFq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectFriendCell" rowHeight="70" id="0Br-Rf-Yqr" customClass="SelectFriendCell" customModule="FireBaseTalk" customModuleProvider="target">
@@ -328,16 +328,24 @@
                                     <outlet property="delegate" destination="kBe-td-kwx" id="6MX-JQ-zzJ"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Hk-Bo-ubW">
+                                <rect key="frame" x="146" y="575" width="82" height="30"/>
+                                <state key="normal" title="채팅방 만들기"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7Th-30-LFq" firstAttribute="leading" secondItem="F6Y-L5-ps3" secondAttribute="leading" id="3SY-0E-Xh2"/>
+                            <constraint firstItem="2Hk-Bo-ubW" firstAttribute="centerX" secondItem="F6Y-L5-ps3" secondAttribute="centerX" id="6ds-wX-hXC"/>
+                            <constraint firstItem="2Hk-Bo-ubW" firstAttribute="top" secondItem="7Th-30-LFq" secondAttribute="bottom" constant="16" id="G6D-SF-pbs"/>
                             <constraint firstAttribute="trailing" secondItem="7Th-30-LFq" secondAttribute="trailing" id="K63-gO-Wya"/>
+                            <constraint firstItem="ioQ-9D-nIS" firstAttribute="top" secondItem="2Hk-Bo-ubW" secondAttribute="bottom" constant="13" id="YvA-H0-kQQ"/>
                             <constraint firstItem="7Th-30-LFq" firstAttribute="top" secondItem="CIy-qd-4Ht" secondAttribute="bottom" id="bvf-uF-uyz"/>
-                            <constraint firstItem="ioQ-9D-nIS" firstAttribute="top" secondItem="7Th-30-LFq" secondAttribute="bottom" id="f0t-zj-SIK"/>
+                            <constraint firstItem="ioQ-9D-nIS" firstAttribute="top" secondItem="7Th-30-LFq" secondAttribute="bottom" constant="59" id="f0t-zj-SIK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button" destination="2Hk-Bo-ubW" id="Ssn-Uc-SEV"/>
                         <outlet property="tableView" destination="7Th-30-LFq" id="Mox-XL-rkw"/>
                     </connections>
                 </viewController>
@@ -549,6 +557,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBk-Ix-dc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4932" y="-676.01199400299856"/>
+        </scene>
+        <!--Group Chat Room View Controller-->
+        <scene sceneID="NxW-w3-KEw">
+            <objects>
+                <viewController storyboardIdentifier="GroupChatRoomViewController" id="Lgk-dZ-uVd" customClass="GroupChatRoomViewController" customModule="FireBaseTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fg3-IS-Cji"/>
+                        <viewControllerLayoutGuide type="bottom" id="6PF-A5-lum"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UBt-Zl-VOW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVE-pJ-REb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5690" y="-676"/>
         </scene>
         <!--Account-->
         <scene sceneID="YlZ-CF-F8V">
