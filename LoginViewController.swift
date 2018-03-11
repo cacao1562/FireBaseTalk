@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
             m.height.equalTo(20)
             }
         }
+        print("oh my god \(#file), \(#function), \(#line) , \(#column), \(#dsohandle)")
+     
         
         color = remoteConfig["splash_background"].stringValue
         

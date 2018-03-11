@@ -9,6 +9,7 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
     var uid : String!
     var chatrooms : [ChatModel]! = []
     var destinationUsers : [String] = []
+    var keys : [String] = []
     
     @IBOutlet var tableview: UITableView!
     
@@ -28,6 +29,7 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.chatrooms.removeAll()
                 if let chatroomdic = item.value as? [String:AnyObject] {
                     let chatmodel = ChatModel(JSON: chatroomdic)
+                    self.keys.append(item.key)
                     self.chatrooms.append(chatmodel!)
                 }
             }
@@ -85,7 +87,8 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
         if (self.destinationUsers[indexPath.row].count > 2 ){ //3명 이상일때
             let destinationUid = self.destinationUsers[indexPath.row]
             let view = self.storyboard?.instantiateViewController(withIdentifier: "GroupChatRoomViewController") as! GroupChatRoomViewController
-            //view.destinationUid = destinationUid
+            view.destinationRoom = self.keys[indexPath.row]
+            
             self.navigationController?.pushViewController(view, animated: true)
         }else {
             let destinationUid = self.destinationUsers[indexPath.row]
